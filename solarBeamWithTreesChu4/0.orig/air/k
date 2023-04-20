@@ -1,0 +1,67 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0/air";
+    object      k;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [ 0 2 -2 0 0 0 0 ];
+
+internalField   uniform 0.82;// approx k = 1.5*(I*U)^2 ; I = 0.1
+
+boundaryField
+{
+    maxY
+    {
+        type            inletOutlet;
+        value           $internalField; 
+        inletValue      $internalField;
+    }
+    minX
+    {
+        type            inletOutlet;
+        value           $internalField;
+        inletValue      $internalField;
+    }
+    maxX
+    {
+        type            inletOutlet;
+        value           $internalField;
+        inletValue      $internalField;
+    }
+    minY
+    {
+        type            inletOutlet;
+        value           $internalField;
+        inletValue      $internalField;
+    }
+    maxZ
+    {
+        type            zeroGradient;
+    }
+    air_to_floor
+    {
+        type            kqRWallFunction;
+        value           $internalField;
+        inletValue      $internalField;
+    }
+    air_to_solid
+    {
+        type            kqRWallFunction;
+        value           $internalField;
+        inletValue      $internalField;
+    }
+}
+
+
+// ************************************************************************* //
