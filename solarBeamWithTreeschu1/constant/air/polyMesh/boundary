@@ -1,0 +1,115 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2212                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       polyBoundaryMesh;
+    location    "constant/air/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+10
+(
+    maxY
+    {
+        type            patch;
+        nFaces          4720;
+        startFace       1114400;
+    }
+
+    minX
+    {
+        type            patch;
+        nFaces          4720;
+        startFace       1119120;
+    }
+
+    maxX
+    {
+        type            patch;
+        nFaces          4720;
+        startFace       1123840;
+    }
+
+    minY
+    {
+        type            patch;
+        nFaces          4720;
+        startFace       1128560;
+    }
+
+    maxZ
+    {
+        type            patch;
+        nFaces          6400;
+        startFace       1133280;
+    }
+
+    air_to_floor
+    {
+        type            mappedWall;
+        inGroups        2 ( wall mappedPatch );
+        nFaces          6300;
+        startFace       1139680;
+        sampleMode      nearestPatchFace;
+        sampleRegion    floor;
+        samplePatch     floor_to_air;
+    }
+
+    air_to_solid
+    {
+        type            mappedWall;
+        inGroups        2 ( wall mappedPatch );
+        nFaces          319;
+        startFace       1145980;
+        sampleMode      nearestPatchFace;
+        sampleRegion    solid;
+        samplePatch     solid_to_air;
+    }
+
+    glass
+    {
+        type            mappedWall;
+        inGroups        2 ( wall mappedPatch );
+        nFaces          99;
+        startFace       1146299;
+        sampleMode      nearestPatchFace;
+        sampleRegion    air;
+        samplePatch     air_to_solid;
+    }
+
+    inlet
+    {
+        type            mappedWall;
+        inGroups        2 ( wall mappedPatch );
+        nFaces          1;
+        startFace       1146398;
+        sampleMode      nearestPatchFace;
+        sampleRegion    air;
+        samplePatch     air_to_solid;
+    }
+
+    outlet
+    {
+        type            mappedWall;
+        inGroups        2 ( wall mappedPatch );
+        nFaces          1;
+        startFace       1146399;
+        sampleMode      nearestPatchFace;
+        sampleRegion    air;
+        samplePatch     air_to_solid;
+    }
+
+)
+
+
+// ************************************************************************* //

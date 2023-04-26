@@ -1,0 +1,77 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2212                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _66908158ae-20221220 OPENFOAM=2212 version=v2212
+Arch   : "LSB;label=32;scalar=64"
+Exec   : createPatch -region solid -overwrite
+Date   : Apr 26 2023
+Time   : 02:08:55
+Host   : DESKTOP-RDCRTE6
+PID    : 2981
+I/O    : uncollated
+Case   : /mnt/e/openfoamCase/solarBeamWithTreesChu12
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Reading "system/createPatchDict"
+
+
+
+Adding patches to mesh solid
+
+Adding new patch glass from 
+{
+    type            wall;
+    nFaces          0;
+    startFace       0;
+}
+
+Adding new patch inlet from 
+{
+    type            patch;
+    nFaces          0;
+    startFace       0;
+}
+
+Adding new patch outlet from 
+{
+    type            patch;
+    nFaces          0;
+    startFace       0;
+}
+
+
+
+
+Repatching mesh solid
+
+Read 100 faces from faceSet glass
+Read 1 faces from faceSet inlet
+Read 1 faces from faceSet outlet
+--> FOAM Warning : 
+    From void changePatchID(const Foam::fvMesh&, const labelList&, Foam::label, Foam::bitSet&, Foam::polyTopoChange&)
+    in file createPatch.C at line 425
+    Face 2496 at (20.5 20.5 9) marked for patch 4 name outlet is already marked for patch 2 name glass. Suppressing further warnings
+Doing topology modification to order faces.
+
+Not synchronising points.
+
+Removing patches with no faces in them.
+
+
+
+Writing repatched mesh solid to 0
+
+End
+

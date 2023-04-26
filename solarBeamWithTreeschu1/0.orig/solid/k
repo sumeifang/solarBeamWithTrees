@@ -1,0 +1,71 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0/air";
+    object      k;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [ 0 2 -2 0 0 0 0 ];
+
+internalField   uniform 0.1;
+
+boundaryField
+{
+	inlet
+    {
+		type            mappedField;
+		sampleMode      nearestPatchFace;
+		samplePatch 	inlet;
+		sampleRegion    air;
+		//offsetMode 		uniform;
+		//offset  		(0 0 0);
+		//interpolationScheme  cell;
+        field           k;              // optional field name
+        setAverage      no;             // apply an average value
+        average         0;              // average to apply if setAverage
+        value           uniform  0.1;		// place holder
+		//inletValue      uniform  0;
+		//Prt             0.85; 
+    }
+    outlet
+    {
+		type            mappedField;
+		sampleMode      nearestPatchFace;
+		samplePatch 	outlet;
+		sampleRegion    air;
+		//offsetMode 		uniform;
+		//offset  		(0 0 0);
+		//interpolationScheme  cell;
+        field           k;              // optional field name
+        setAverage      no;             // apply an average value
+        average         0;              // average to apply if setAverage
+        value           uniform  0.1;		// place holder
+		//inletValue      uniform  0;
+		//Prt             0.85; 
+    }
+    "(solid_to_floor|glass)"
+    {
+        type            kqRWallFunction;
+        value           $internalField;
+        inletValue      $internalField;
+    }
+    solid_to_air
+    {
+        type            kqRWallFunction;
+        value           $internalField;
+        inletValue      $internalField;
+    }
+}
+
+
+// ************************************************************************* //

@@ -1,0 +1,123 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2212                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _66908158ae-20221220 OPENFOAM=2212 version=v2212
+Arch   : "LSB;label=32;scalar=64"
+Exec   : changeDictionary -region air
+Date   : Apr 26 2023
+Time   : 02:09:05
+Host   : DESKTOP-RDCRTE6
+PID    : 2985
+I/O    : uncollated
+Case   : /mnt/e/openfoamCase/solarBeamWithTreesChu12
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh air for time = 0
+
+Read dictionary changeDictionaryDict with replacements for dictionaries 1(boundary)
+Reading polyMesh/boundary file to extract patch names
+Loaded dictionary boundary with entries 10(maxY minX maxX minY maxZ air_to_floor air_to_solid glass inlet outlet)
+Extracted patch groups:
+    group mappedPatch with patches 2(air_to_floor air_to_solid)
+    group wall with patches 5(air_to_floor air_to_solid glass inlet outlet)
+Replacing entries in dictionary boundary
+Special handling of boundary as polyMesh/boundary file.
+Merging entries from 1((glass|inlet|outlet))
+fieldDict:
+{
+    maxY
+    {
+        type            patch;
+        nFaces          4720;
+        startFace       1114400;
+    }
+    minX
+    {
+        type            patch;
+        nFaces          4720;
+        startFace       1119120;
+    }
+    maxX
+    {
+        type            patch;
+        nFaces          4720;
+        startFace       1123840;
+    }
+    minY
+    {
+        type            patch;
+        nFaces          4720;
+        startFace       1128560;
+    }
+    maxZ
+    {
+        type            patch;
+        nFaces          6400;
+        startFace       1133280;
+    }
+    air_to_floor
+    {
+        type            mappedWall;
+        inGroups        2 ( wall mappedPatch );
+        nFaces          6300;
+        startFace       1139680;
+        sampleMode      nearestPatchFace;
+        sampleRegion    floor;
+        samplePatch     floor_to_air;
+    }
+    air_to_solid
+    {
+        type            mappedWall;
+        inGroups        2 ( wall mappedPatch );
+        nFaces          319;
+        startFace       1145980;
+        sampleMode      nearestPatchFace;
+        sampleRegion    solid;
+        samplePatch     solid_to_air;
+    }
+    glass
+    {
+        type            mappedWall;
+        inGroups        2 ( wall mappedPatch );
+        nFaces          99;
+        startFace       1146299;
+        sampleMode      nearestPatchFace;
+        sampleRegion    air;
+        samplePatch     air_to_solid;
+    }
+    inlet
+    {
+        type            mappedWall;
+        inGroups        2 ( wall mappedPatch );
+        nFaces          1;
+        startFace       1146398;
+        sampleMode      nearestPatchFace;
+        sampleRegion    air;
+        samplePatch     air_to_solid;
+    }
+    outlet
+    {
+        type            mappedWall;
+        inGroups        2 ( wall mappedPatch );
+        nFaces          1;
+        startFace       1146399;
+        sampleMode      nearestPatchFace;
+        sampleRegion    air;
+        samplePatch     air_to_solid;
+    }
+}
+
+Writing modified boundary
+
+End
+
