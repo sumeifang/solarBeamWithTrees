@@ -1,0 +1,89 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2212                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       polyBoundaryMesh;
+    location    "constant/domain1/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+9
+(
+    inlet
+    {
+        type            patch;
+        nFaces          1644;
+        startFace       439737;
+    }
+    outlet
+    {
+        type            patch;
+        nFaces          1560;
+        startFace       441381;
+    }
+    left
+    {
+        type            patch;
+        nFaces          2424;
+        startFace       442941;
+    }
+    right
+    {
+        type            patch;
+        nFaces          2340;
+        startFace       445365;
+    }
+    top
+    {
+        type            patch;
+        nFaces          2400;
+        startFace       447705;
+    }
+    window
+    {
+        type            patch;
+        nFaces          51;
+        startFace       450105;
+    }
+    domain1_to_floor
+    {
+        type            mappedWall;
+        inGroups        1(wall);
+        nFaces          3330;
+        startFace       450156;
+        sampleMode      nearestPatchFace;
+        sampleRegion    floor;
+        samplePatch     floor_to_domain1;
+    }
+    domain1_to_building
+    {
+        type            mappedWall;
+        inGroups        1(wall);
+        nFaces          11615;
+        startFace       453486;
+        sampleMode      nearestPatchFace;
+        sampleRegion    building;
+        samplePatch     building_to_domain1;
+    }
+    domain1_to_atrium
+    {
+        type            mappedWall;
+        inGroups        1(wall);
+        nFaces          2189;
+        startFace       465101;
+        sampleMode      nearestPatchFace;
+        sampleRegion    atrium;
+        samplePatch     atrium_to_domain1;
+    }
+)
+
+// ************************************************************************* //

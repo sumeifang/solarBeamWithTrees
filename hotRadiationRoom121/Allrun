@@ -1,0 +1,28 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
+
+runApplication blockMesh
+cp system/topoSetDict.1 system/topoSetDict
+topoSet > log.topoSet.1
+runApplication surfaceFeatureExtract
+runApplication snappyHexMesh -overwrite
+
+cp system/topoSetDict.2 system/topoSetDict 
+topoSet > log.topoSet.2
+runApplication splitMeshRegions -cellZones -overwrite
+
+#runApplication -s floor changeDictionary -region floor
+
+# Remove fluid fields from solid regions (important for post-processing)
+for region in $(foamListRegions solid)
+do
+    rm -f 0/$region/{rho,mut,alphat,epsilon,k,U,p_rgh,qr,G,IDefault}
+    rm -f processor*/0/$region/{rho,mut,alphat,epsilon,k,U,p_rgh,qr,G,IDefault}
+done
+
+restore0Dir
+runApplication $(getApplication)
+
+#------------------------------------------------------------------------------

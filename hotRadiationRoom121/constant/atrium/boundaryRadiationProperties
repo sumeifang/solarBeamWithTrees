@@ -1,0 +1,62 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      boundaryRadiationProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+atrium_to_domain1
+{
+type  transparent;
+
+    wallAbsorptionEmissionModel
+    {
+        type            multiBandAbsorption;
+        emissivity      (0.9);
+        absorptivity    (0.1);
+    };
+}
+window
+{
+type  transparent;
+
+    wallAbsorptionEmissionModel
+    {
+        type            multiBandAbsorption;
+        emissivity      (0.9);
+        absorptivity    (0.1);
+    };
+}
+atrium_to_building
+{
+type       opaqueDiffusive;
+    wallAbsorptionEmissionModel
+    {
+        type            multiBandAbsorption;
+        absorptivity    (0.7);
+        emissivity      (0.9);
+    };
+}
+
+atrium_to_floor
+{
+    type       opaqueDiffusive;
+    wallAbsorptionEmissionModel
+    {
+        type            multiBandAbsorption;
+        absorptivity    (0.7);
+        emissivity      (0.9);
+    };
+}
+
+// ************************************************************************* //

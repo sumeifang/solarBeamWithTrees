@@ -1,0 +1,41 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2212                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _66908158ae-20221220 OPENFOAM=2212 version=v2212
+Arch   : "LSB;label=32;scalar=64"
+Exec   : topoSet
+Date   : May 05 2023
+Time   : 00:07:41
+Host   : DESKTOP-RDCRTE6
+PID    : 17508
+I/O    : uncollated
+Case   : /mnt/e/openfoamCase/hotRadiationRoom121
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Reading topoSetDict
+
+Time = 0
+    mesh not changed.
+Created cellSet floorcell
+    Applying source boxToCell
+    Adding cells with centre within boxes 1((0 0 0) (300 200 5))
+    cellSet floorcell now size 2400
+Created cellZoneSet floor
+    Applying source setToCellZone
+    Adding all cells from cellSet floorcell ...
+    cellZoneSet floor now size 2400
+
+End
+

@@ -1,0 +1,143 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2212                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _66908158ae-20221220 OPENFOAM=2212 version=v2212
+Arch   : "LSB;label=32;scalar=64"
+Exec   : chtMultiRegionSimpleFoam
+Date   : May 05 2023
+Time   : 00:09:05
+Host   : DESKTOP-RDCRTE6
+PID    : 17521
+I/O    : uncollated
+Case   : /mnt/e/openfoamCase/hotRadiationRoom121
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create fluid mesh for region atrium for time = 0
+
+Create fluid mesh for region building for time = 0
+
+Create fluid mesh for region domain1 for time = 0
+
+Create solid mesh for region floor for time = 0
+
+*** Reading fluid mesh thermophysical properties for region atrium
+
+    Adding to thermoFluid
+
+Selecting thermodynamics package 
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState perfectGas;
+    specie          specie;
+    energy          sensibleEnthalpy;
+}
+
+    Adding to rhoFluid
+
+    Adding to UFluid
+
+    Adding to phiFluid
+
+    Adding to hRefFluid
+
+    Adding to ghFluid
+
+    Adding to ghfFluid
+
+    Adding to turbulence
+
+Selecting turbulence model type RAS
+Selecting RAS turbulence model kEpsilon
+RAS
+{
+    RASModel        kEpsilon;
+    turbulence      on;
+    printCoeffs     on;
+    Cmu             0.09;
+    C1              1.44;
+    C2              1.92;
+    C3              0;
+    sigmak          1;
+    sigmaEps        1.3;
+}
+
+Selecting radiationModel fvDOM
+Selecting absorptionEmissionModel multiBandAbsorptionEmission
+Selecting scatterModel none
+Selecting sootModel none
+fvDOM : Allocated 36 rays with average orientation:
+Sun direction : (0.7071068 0 -0.7071068)
+
+Sun ray ID : 12
+
+	I0 : dAve : 	(0.2105784 0.1388401 -0.01422886) : omega : 	0.2617994 : d : 	(0.7865661 0.6123724 0.07945931)
+	I1 : dAve : 	(0.2352599 0.08263828 0.04057106) : omega : 	0.2617994 : d : 	(0.8641989 0.4355957 0.2518265)
+	I2 : dAve : 	(0.2232095 0.04149569 0.1108058) : omega : 	0.2617994 : d : 	(0.8262957 0.3061862 0.4727424)
+	I3 : dAve : 	(0.1776561 0.02643646 0.1776561) : omega : 	0.2617994 : d : 	(0.6830127 0.258819 0.6830127)
+	I4 : dAve : 	(0.1108058 0.04149569 0.2232095) : omega : 	0.2617994 : d : 	(0.4727424 0.3061862 0.8262957)
+	I5 : dAve : 	(0.04057106 0.08263828 0.2352599) : omega : 	0.2617994 : d : 	(0.2518265 0.4355957 0.8641989)
+	I6 : dAve : 	(-0.01422886 0.1388401 0.2105784) : omega : 	0.2617994 : d : 	(0.07945931 0.6123724 0.7865661)
+	I7 : dAve : 	(-0.03891031 0.1950419 0.1557785) : omega : 	0.2617994 : d : 	(0.001826484 0.7891491 0.6141989)
+	I8 : dAve : 	(-0.02685993 0.2361845 0.0855437) : omega : 	0.2617994 : d : 	(0.03972966 0.9185587 0.393283)
+	I9 : dAve : 	(0.0186934 0.2512437 0.0186934) : omega : 	0.2617994 : d : 	(0.1830127 0.9659258 0.1830127)
+	I10 : dAve : 	(0.0855437 0.2361845 -0.02685993) : omega : 	0.2617994 : d : 	(0.393283 0.9185587 0.03972966)
+	I11 : dAve : 	(0.1557785 0.1950419 -0.03891031) : omega : 	0.2617994 : d : 	(0.6141989 0.7891491 0.001826484)
+	I12 : dAve : 	(0.3501441 -6.938894e-18 -0.3501441) : omega : 	0.5235988 : d : 	(0.7071068 -1.387779e-17 -0.7071068)
+	I13 : dAve : 	(0.4270283 -0.1750721 -0.1794391) : omega : 	0.5235988 : d : 	(0.8623724 -0.3535534 -0.3623724)
+	I14 : dAve : 	(0.3894906 -0.3032337 0.03934655) : omega : 	0.5235988 : d : 	(0.7865661 -0.6123724 0.07945931)
+	I15 : dAve : 	(0.2475893 -0.3501441 0.2475893) : omega : 	0.5235988 : d : 	(0.5 -0.7071068 0.5)
+	I16 : dAve : 	(0.03934655 -0.3032337 0.3894906) : omega : 	0.5235988 : d : 	(0.07945931 -0.6123724 0.7865661)
+	I17 : dAve : 	(-0.1794391 -0.1750721 0.4270283) : omega : 	0.5235988 : d : 	(-0.3623724 -0.3535534 0.8623724)
+	I18 : dAve : 	(-0.3501441 -9.020562e-17 0.3501441) : omega : 	0.5235988 : d : 	(-0.7071068 -1.804112e-16 0.7071068)
+	I19 : dAve : 	(-0.4270283 0.1750721 0.1794391) : omega : 	0.5235988 : d : 	(-0.8623724 0.3535534 0.3623724)
+	I20 : dAve : 	(-0.3894906 0.3032337 -0.03934655) : omega : 	0.5235988 : d : 	(-0.7865661 0.6123724 -0.07945931)
+	I21 : dAve : 	(-0.2475893 0.3501441 -0.2475893) : omega : 	0.5235988 : d : 	(-0.5 0.7071068 -0.5)
+	I22 : dAve : 	(-0.03934655 0.3032337 -0.3894906) : omega : 	0.5235988 : d : 	(-0.07945931 0.6123724 -0.7865661)
+	I23 : dAve : 	(0.1794391 0.1750721 -0.4270283) : omega : 	0.5235988 : d : 	(0.3623724 0.3535534 -0.8623724)
+	I24 : dAve : 	(0.01422886 -0.1388401 -0.2105784) : omega : 	0.2617994 : d : 	(-0.07945931 -0.6123724 -0.7865661)
+	I25 : dAve : 	(0.03891031 -0.1950419 -0.1557785) : omega : 	0.2617994 : d : 	(-0.001826484 -0.7891491 -0.6141989)
+	I26 : dAve : 	(0.02685993 -0.2361845 -0.0855437) : omega : 	0.2617994 : d : 	(-0.03972966 -0.9185587 -0.393283)
+	I27 : dAve : 	(-0.0186934 -0.2512437 -0.0186934) : omega : 	0.2617994 : d : 	(-0.1830127 -0.9659258 -0.1830127)
+	I28 : dAve : 	(-0.0855437 -0.2361845 0.02685993) : omega : 	0.2617994 : d : 	(-0.393283 -0.9185587 -0.03972966)
+	I29 : dAve : 	(-0.1557785 -0.1950419 0.03891031) : omega : 	0.2617994 : d : 	(-0.6141989 -0.7891491 -0.001826484)
+	I30 : dAve : 	(-0.2105784 -0.1388401 0.01422886) : omega : 	0.2617994 : d : 	(-0.7865661 -0.6123724 -0.07945931)
+	I31 : dAve : 	(-0.2352599 -0.08263828 -0.04057106) : omega : 	0.2617994 : d : 	(-0.8641989 -0.4355957 -0.2518265)
+	I32 : dAve : 	(-0.2232095 -0.04149569 -0.1108058) : omega : 	0.2617994 : d : 	(-0.8262957 -0.3061862 -0.4727424)
+	I33 : dAve : 	(-0.1776561 -0.02643646 -0.1776561) : omega : 	0.2617994 : d : 	(-0.6830127 -0.258819 -0.6830127)
+	I34 : dAve : 	(-0.1108058 -0.04149569 -0.2232095) : omega : 	0.2617994 : d : 	(-0.4727424 -0.3061862 -0.8262957)
+	I35 : dAve : 	(-0.04057106 -0.08263828 -0.2352599) : omega : 	0.2617994 : d : 	(-0.2518265 -0.4355957 -0.8641989)
+Total omega : 12.56637
+
+    Adding MRF
+
+No MRF models present
+
+    Adding fvOptions
+
+
+
+--> FOAM FATAL ERROR: (openfoam-2212)
+
+    failed lookup of U (objectRegistry domain1)
+    available objects of type volVectorField:
+0()
+
+
+    From const Type& Foam::objectRegistry::lookupObject(const Foam::word&, bool) const [with Type = Foam::GeometricField<Foam::Vector<double>, Foam::fvPatchField, Foam::volMesh>]
+    in file /home/sumeifang/OpenFOAM/OpenFOAM-v2212/src/OpenFOAM/lnInclude/objectRegistryTemplates.C at line 571.
+
+FOAM exiting
+

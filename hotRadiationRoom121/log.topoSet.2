@@ -1,0 +1,59 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2212                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _66908158ae-20221220 OPENFOAM=2212 version=v2212
+Arch   : "LSB;label=32;scalar=64"
+Exec   : topoSet
+Date   : May 05 2023
+Time   : 00:08:56
+Host   : DESKTOP-RDCRTE6
+PID    : 17512
+I/O    : uncollated
+Case   : /mnt/e/openfoamCase/hotRadiationRoom121
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Reading topoSetDict
+
+Time = 0
+    mesh not changed.
+Created cellSet domain1
+    Applying source boxToCell
+    Adding cells with centre within boxes 1((0 0 5) (300 200 200))
+    cellSet domain1 now size 228322
+Created cellSet atrium
+    Applying source zoneToCell
+    Adding all cells of cell zones (atrium) ...
+    Using zone atrium with 23031 cells.
+    cellSet atrium now size 23031
+Created cellSet building
+    Applying source zoneToCell
+    Adding all cells of cell zones (building) ...
+    Using zone building with 56977 cells.
+    cellSet building now size 56977
+Read set cellSet domain1 size:228322
+    Applying source cellToCell
+    Removing all elements of cellSet (atrium)
+    cellSet domain1 now size 205291
+Read set cellSet domain1 size:205291
+    Applying source cellToCell
+    Removing all elements of cellSet (building)
+    cellSet domain1 now size 148314
+Created cellZoneSet domain1
+    Applying source setToCellZone
+    Adding all cells from cellSet domain1 ...
+    cellZoneSet domain1 now size 148314
+
+End
+
