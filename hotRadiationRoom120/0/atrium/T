@@ -1,0 +1,80 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0/atrium";
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [ 0 0 0 1 0 0 0 ];
+
+internalField   uniform 293;
+
+boundaryField
+{
+
+   atrium_to_domain1
+    {
+        type            compressible::turbulentTemperatureRadCoupledMixed;
+        value           uniform 293;
+        Tnbr            T;
+        kappaMethod     fluidThermo;
+        qrNbr           qr;
+        qr              qr;
+        kappa           none;
+		thicknessLayers (0.01);//list of thicknesses per layer [m]
+		kappaLayers     (6.4);//list of thermal conductivites per layer [W/m/K]
+		thermalInertia  true;
+    }
+	atrium_to_building
+    {
+        type            compressible::turbulentTemperatureRadCoupledMixed;
+        value           uniform 293;
+        Tnbr            T;
+        kappaMethod     fluidThermo;
+        qrNbr           qr;
+        qr              qr;
+        kappa           none;
+		thicknessLayers (0.2);//list of thicknesses per layer [m]
+		kappaLayers     (1.6);//list of thermal conductivites per layer [W/m/K]
+		thermalInertia  true;
+    }
+	atrium_to_floor
+    {
+        type            compressible::turbulentTemperatureRadCoupledMixed;
+        value           uniform 293;
+        Tnbr            T;
+        kappaMethod     fluidThermo;
+        qrNbr           none;
+        qr              none;
+        kappa           none;
+    }
+	window
+    {
+		type            mappedField;
+		sampleMode      nearestPatchFace;
+		samplePatch 	window;
+		sampleRegion    domain1;
+		//offsetMode 		uniform;
+		//offset  		(0 0 0);
+		//interpolationScheme  cell;
+        field           T;              // optional field name
+        setAverage      no;             // apply an average value
+        average         0;              // average to apply if setAverage
+        value           uniform  293;		// place holder
+		//inletValue      uniform  0;
+		//Prt             0.85; 
+    }
+}
+
+
+// ************************************************************************* //

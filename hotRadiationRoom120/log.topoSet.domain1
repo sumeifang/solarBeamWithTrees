@@ -1,0 +1,64 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2212                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _66908158ae-20221220 OPENFOAM=2212 version=v2212
+Arch   : "LSB;label=32;scalar=64"
+Exec   : topoSet -region domain1
+Date   : May 04 2023
+Time   : 12:34:51
+Host   : DESKTOP-RDCRTE6
+PID    : 14223
+I/O    : uncollated
+Case   : /mnt/e/openfoamCase/hotRadiationRoom120
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh domain1 for time = 0
+
+Reading topoSetDict
+
+Time = 0
+    mesh not changed.
+Created faceSet window
+    Applying source patchToFace
+    Adding all faces of patches (window) ...
+    Found matching patch window with 51 faces.
+    faceSet window now size 51
+Created faceSet domain1_to_atrium_wall
+    Applying source patchToFace
+    Adding all faces of patches (domain1_to_atrium) ...
+    Found matching patch domain1_to_atrium with 2189 faces.
+    faceSet domain1_to_atrium_wall now size 2189
+Read set faceSet domain1_to_atrium_wall size:2189
+    Applying source faceToFace
+    Removing all elements of faceSet (window)
+    faceSet domain1_to_atrium_wall now size 2189
+Created faceSet domain1_to_atrium
+    Applying source faceToFace
+    Adding all elements of faceSet (domain1_to_atrium_wall)
+    faceSet domain1_to_atrium now size 2189
+Created faceSet domain1_to_atrium_window
+    Applying source patchToFace
+    Adding all faces of patches (domain1_to_atrium) ...
+    Found matching patch domain1_to_atrium with 2189 faces.
+    faceSet domain1_to_atrium_window now size 2189
+Read set faceSet domain1_to_atrium_window size:2189
+    Applying source faceToFace
+    Removing all elements of faceSet (domain1_to_atrium_wall)
+    faceSet domain1_to_atrium_window now size 0
+Created faceSet window
+    Applying source faceToFace
+    Adding all elements of faceSet (domain1_to_atrium_window)
+    faceSet window now size 0
+
+End
+

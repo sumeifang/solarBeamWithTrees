@@ -1,0 +1,41 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2212                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       regIOobject;
+    location    "constant/domain1/polyMesh";
+    object      cellZones;
+    meta
+    {
+        names           3 ( floor atrium building );
+    }
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+3
+(floor
+{
+    type            cellZone;
+    cellLabels      List<label> 0();
+}
+atrium
+{
+    type            cellZone;
+    cellLabels      List<label> 0();
+}
+building
+{
+    type            cellZone;
+    cellLabels      List<label> 0();
+}
+)
+
+// ************************************************************************* //

@@ -1,0 +1,189 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2212                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _66908158ae-20221220 OPENFOAM=2212 version=v2212
+Arch   : "LSB;label=32;scalar=64"
+Exec   : surfaceFeatureExtract
+Date   : May 04 2023
+Time   : 12:33:28
+Host   : DESKTOP-RDCRTE6
+PID    : 14217
+I/O    : uncollated
+Case   : /mnt/e/openfoamCase/hotRadiationRoom120
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+
+Note: Feature line extraction only valid on closed manifold surfaces
+
+Reading surfaceFeatureExtractDict
+
+Surfaces     : atrium.stl
+Output       : atrium
+Load options : offset
+Write options: writeObj=yes writeVTK=off
+
+Statistics:
+Triangles    : 384 in 1 region(s)
+Vertices     : 194
+Bounding Box : (76.6738 69.53447 5) (147.7316 96.23447 54.253)
+
+Constructing feature set from included angle 150
+Selecting edges based purely on geometric tests: no
+
+Initial Feature set:
+    points : 28
+    edges  : 118
+    of which
+        region edges   : 0
+        external edges : 94
+        internal edges : 24
+
+Final Feature set:
+    points : 104
+    of which
+        convex             : 16
+        concave            : 2
+        mixed              : 10
+        non-feature        : 76
+    edges  : 118
+    of which
+        external edges     : 94
+        internal edges     : 24
+        flat edges         : 0
+        open edges         : 0
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/atrium.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/atrium"
+Writing 16 convex feature points to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/atrium_convexFeaturePts.obj"
+Writing 2 concave feature points to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/atrium_concaveFeaturePts.obj"
+Writing 10 mixed feature points to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/atrium_mixedFeaturePts.obj"
+Writing 10 mixed feature point structure to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/atrium_mixedFeaturePtsStructure.obj"
+Writing 94 external edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/atrium_externalEdges.obj"
+Writing 24 internal edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/atrium_internalEdges.obj"
+Writing 0 flat edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/atrium_flatEdges.obj"
+Writing 0 open edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/atrium_openEdges.obj"
+Writing 0 multiple edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/atrium_multipleEdges.obj"
+Writing 0 region edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/atrium_regionEdges.obj"
+Writing 118 edge directions to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/atrium_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/triSurface/atrium.eMesh"
+Surfaces     : building.stl
+Output       : building
+Load options : offset
+Write options: writeObj=yes writeVTK=off
+
+Statistics:
+Triangles    : 274 in 1 region(s)
+Vertices     : 137
+Bounding Box : (54.06483 53.15396 5) (175.1266 107.976 49.9)
+
+Constructing feature set from included angle 150
+Selecting edges based purely on geometric tests: no
+
+Initial Feature set:
+    points : 38
+    edges  : 112
+    of which
+        region edges   : 0
+        external edges : 89
+        internal edges : 23
+
+Final Feature set:
+    points : 93
+    of which
+        convex             : 20
+        concave            : 0
+        mixed              : 18
+        non-feature        : 55
+    edges  : 112
+    of which
+        external edges     : 89
+        internal edges     : 23
+        flat edges         : 0
+        open edges         : 0
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/building.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/building"
+Writing 20 convex feature points to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/building_convexFeaturePts.obj"
+Writing 0 concave feature points to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/building_concaveFeaturePts.obj"
+Writing 18 mixed feature points to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/building_mixedFeaturePts.obj"
+Writing 18 mixed feature point structure to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/building_mixedFeaturePtsStructure.obj"
+Writing 89 external edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/building_externalEdges.obj"
+Writing 23 internal edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/building_internalEdges.obj"
+Writing 0 flat edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/building_flatEdges.obj"
+Writing 0 open edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/building_openEdges.obj"
+Writing 0 multiple edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/building_multipleEdges.obj"
+Writing 0 region edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/building_regionEdges.obj"
+Writing 112 edge directions to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/building_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/triSurface/building.eMesh"
+Surfaces     : window.stl
+Output       : window
+Load options : offset
+Write options: writeObj=yes writeVTK=off
+
+Statistics:
+Triangles    : 4 in 1 region(s)
+Vertices     : 8
+Bounding Box : (86.39116 69.53447 5) (95.03889 93.5379 54.253)
+
+Constructing feature set from included angle 150
+Selecting edges based purely on geometric tests: no
+
+Initial Feature set:
+    points : 8
+    edges  : 8
+    of which
+        region edges   : 8
+        external edges : 0
+        internal edges : 0
+
+Final Feature set:
+    points : 8
+    of which
+        convex             : 0
+        concave            : 0
+        mixed              : 8
+        non-feature        : 0
+    edges  : 8
+    of which
+        external edges     : 0
+        internal edges     : 0
+        flat edges         : 0
+        open edges         : 8
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/window.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/window"
+Writing 0 convex feature points to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/window_convexFeaturePts.obj"
+Writing 0 concave feature points to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/window_concaveFeaturePts.obj"
+Writing 8 mixed feature points to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/window_mixedFeaturePts.obj"
+Writing 8 mixed feature point structure to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/window_mixedFeaturePtsStructure.obj"
+Writing 0 external edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/window_externalEdges.obj"
+Writing 0 internal edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/window_internalEdges.obj"
+Writing 0 flat edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/window_flatEdges.obj"
+Writing 8 open edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/window_openEdges.obj"
+Writing 0 multiple edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/window_multipleEdges.obj"
+Writing 8 region edges to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/window_regionEdges.obj"
+Writing 8 edge directions to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/extendedFeatureEdgeMesh/window_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/mnt/e/openfoamCase/hotRadiationRoom120/constant/triSurface/window.eMesh"
+ExecutionTime = 0.02 s  ClockTime = 0 s
+
+End
+

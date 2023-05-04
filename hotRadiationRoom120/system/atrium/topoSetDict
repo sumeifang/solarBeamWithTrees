@@ -1,0 +1,78 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+//生成face
+//window
+    {
+        name    window;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        patch   window;
+    }
+
+	    {
+        name    atrium_to_domain1_wall;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        patch   atrium_to_domain1;
+    }
+
+	{
+        name    atrium_to_domain1_wall;
+        type    faceSet;
+        action  subtract;
+        source  faceToFace;
+		set   window;
+    }
+    {
+        name    atrium_to_domain1;
+        type   faceSet;
+        action  new;
+        source  faceToFace;
+		set   atrium_to_domain1_wall;
+    }
+	
+	 {
+        name    atrium_to_domain1_window;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        patch   atrium_to_domain1;
+    }
+
+	
+		{
+        name    atrium_to_domain1_window;
+        type    faceSet;
+        action  subtract;
+        source  faceToFace;
+		set   atrium_to_domain1_wall;
+    }
+				{
+        name    window;
+        type    faceSet;
+        action  new;
+        source  faceToFace;
+		set   atrium_to_domain1_window;
+    }	
+);
+
+// ************************************************************************* //
