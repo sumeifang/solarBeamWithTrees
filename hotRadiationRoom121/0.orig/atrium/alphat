@@ -32,7 +32,7 @@ boundaryField
 		type            mappedField;
 		sampleMode      nearestPatchFace;
 		samplePatch 	window;
-		sampleRegion    doamin1;
+		sampleRegion    domain1;
 		//offsetMode 		uniform;
 		//offset  		(0 0 0);
 		//interpolationScheme  cell;
