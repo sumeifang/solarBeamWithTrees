@@ -26,7 +26,7 @@ boundaryField
         type            wideBandDiffusiveRadiation;
         value           uniform 0;
     }
-		window
+/*		window
     {
 		type            mappedField;
 		sampleMode      nearestPatchFace;
@@ -41,7 +41,7 @@ boundaryField
         value           uniform  0;		// place holder
 		//inletValue      uniform  0;
 		//Prt             0.85; 
-    }
+    }*/
 }
 
 
