@@ -1,0 +1,66 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0/air";
+    object      p_rgh;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [ 1 -1 -2 0 0 0 0 ];
+
+internalField   uniform 100000;
+
+boundaryField
+{
+	".*"
+    {
+        type            fixedFluxPressure;
+        p0              $internalField;
+    }
+/*
+	inlet
+    {
+		type            mappedField;
+		sampleMode      nearestPatchFace;
+		samplePatch 	inlet;
+		sampleRegion    air;
+		//offsetMode 		uniform;
+		//offset  		(0 0 0);
+		//interpolationScheme  cell;
+        field           p_rgh;              // optional field name
+        setAverage      no;             // apply an average value
+        average         0;              // average to apply if setAverage
+        value           $internalField;		// place holder
+		//inletValue      uniform  0;
+		//Prt             0.85; 
+    }
+    outlet
+    {
+		type            mappedField;
+		sampleMode      nearestPatchFace;
+		samplePatch 	outlet;
+		sampleRegion    air;
+		//offsetMode 		uniform;
+		//offset  		(0 0 0);
+		//interpolationScheme  cell;
+        field           p_rgh;              // optional field name
+        setAverage      no;             // apply an average value
+        average         0;              // average to apply if setAverage
+        value          $internalField;		// place holder
+		//inletValue      uniform  0;
+		//Prt             0.85; 
+    }
+	*/
+}
+
+
+// ************************************************************************* //

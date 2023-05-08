@@ -1,0 +1,86 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    location    "0/air";
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [ 0 1 -1 0 0 0 0 ];
+
+internalField   uniform ( 0 0 0 );
+
+boundaryField
+{
+   ".*"
+    {
+        type            pressureInletOutletVelocity;
+        value           $internalField;
+        phi             phi;
+    }
+	 inlet
+    {
+        type            fixedValue;
+        value           uniform ( 2 0 0 );
+		phi             phi;
+    }
+		window_inlet
+    {
+        type            fixedValue;
+        value           $internalField;
+		phi             phi;
+    }
+		window_outlet
+    {
+        type            pressureInletOutletVelocity;
+        value           $internalField;
+        phi             phi;
+    }
+	/*
+			window_outlet
+    {
+		type            mappedField;
+		sampleMode      nearestPatchFace;
+		samplePatch 	window_outlet;
+		sampleRegion    atrium;
+		//offsetMode 		uniform;
+		//offset  		(0 0 0);
+		//interpolationScheme  cell;
+        field           U;              // optional field name
+        setAverage      no;             // apply an average value
+        average         0;              // average to apply if setAverage
+        value          $internalField;		// place holder
+		  //      phi             phi;
+		//inletValue      uniform  0;
+		//Prt             0.85; 
+    }
+	*/
+	glass
+    {
+        type            noSlip;
+    }
+     domain1_to_building
+    {
+        type            noSlip;
+    }
+	  domain1_to_atrium
+    {
+        type           noSlip;
+    }
+	  domain1_to_floor
+    {
+        type            noSlip;
+    }
+}
+
+
+// ************************************************************************* //
