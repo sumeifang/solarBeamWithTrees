@@ -1,0 +1,118 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+scale   1;
+
+	xmin  -200;
+	xmax  800;
+	ymin  -300;
+	ymax  300;
+	zmin  0;
+	zmax  200;
+	xcells  200;
+	ycells  120;
+	zcells  40;
+//按tab键，使用变量表示xyz的最大值和最小值，以及各个方向网格的数目，以方便后续修改
+
+
+vertices
+(
+    ($xmin $ymin $zmin)
+    ($xmax $ymin $zmin)
+    ($xmax $ymax $zmin)
+    ($xmin $ymax $zmin)
+
+    ($xmin $ymin $zmax)
+    ($xmax $ymin $zmax)
+    ($xmax $ymax $zmax)
+    ($xmin $ymax $zmax)
+);
+//输入八个点的坐标，注意前面的美元符号不能省略
+
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) ($xcells  $ycells $zcells) simpleGrading (1 1 1)
+);
+//输入各个方向的单元数，背景网格膨胀率尽量保持在111
+
+
+edges
+(
+);
+
+boundary
+(
+    inlet
+    {
+        type patch;
+        faces
+        (
+            (0 4 7 3)
+        );
+    }
+
+    outlet
+    {
+        type patch;
+        faces
+        (
+            (1 2 6 5)
+
+        );
+    }
+
+
+   ground
+    {
+        type wall;
+        faces
+        (
+            (0 3 2 1)
+        );
+    }
+
+   left
+    {
+        type patch;
+        faces
+        (
+            (0 1 5 4)
+        );
+    }
+	right
+    {
+        type patch;
+        faces
+        (
+            (3 7 6 2)
+        );
+    }
+	top
+	    {
+        type patch;
+        faces
+        (
+
+            (4 5 6 7)
+        );
+    }
+);
+
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //
