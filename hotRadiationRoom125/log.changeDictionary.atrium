@@ -1,0 +1,82 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2212                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _66908158ae-20221220 OPENFOAM=2212 version=v2212
+Arch   : "LSB;label=32;scalar=64"
+Exec   : changeDictionary -region atrium
+Date   : May 08 2023
+Time   : 17:03:12
+Host   : DESKTOP-RDCRTE6
+PID    : 8110
+I/O    : uncollated
+Case   : /mnt/e/openfoamCase/hotRadiationRoom124
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh atrium for time = 0
+
+Read dictionary changeDictionaryDict with replacements for dictionaries 1(boundary)
+Reading polyMesh/boundary file to extract patch names
+Loaded dictionary boundary with entries 4(glass atrium_to_floor atrium_to_building atrium_to_domain1)
+Extracted patch groups:
+    group wall with patches 4(glass atrium_to_floor atrium_to_building atrium_to_domain1)
+Replacing entries in dictionary boundary
+Special handling of boundary as polyMesh/boundary file.
+Merging entries from 1(glass)
+fieldDict:
+{
+    glass
+    {
+        type            mappedWall;
+        inGroups        1 ( wall );
+        nFaces          875;
+        startFace       66554;
+        sampleMode      nearestPatchFace;
+        sampleRegion    domain1;
+        samplePatch     glass;
+    }
+    atrium_to_floor
+    {
+        type            mappedWall;
+        inGroups        1 ( wall );
+        nFaces          877;
+        startFace       67429;
+        sampleMode      nearestPatchFace;
+        sampleRegion    floor;
+        samplePatch     floor_to_atrium;
+    }
+    atrium_to_building
+    {
+        type            mappedWall;
+        inGroups        1 ( wall );
+        nFaces          5394;
+        startFace       68306;
+        sampleMode      nearestPatchFace;
+        sampleRegion    building;
+        samplePatch     building_to_atrium;
+    }
+    atrium_to_domain1
+    {
+        type            mappedWall;
+        inGroups        1 ( wall );
+        nFaces          1370;
+        startFace       73700;
+        sampleMode      nearestPatchFace;
+        sampleRegion    domain1;
+        samplePatch     domain1_to_atrium;
+    }
+}
+
+Writing modified boundary
+
+End
+
