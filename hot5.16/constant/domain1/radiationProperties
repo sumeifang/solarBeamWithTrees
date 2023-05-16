@@ -1,0 +1,79 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      radiationProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+radiation       on;
+
+radiationModel  fvDOM;
+
+fvDOMCoeffs
+{
+    nPhi        3;      // azimuthal angles in PI/2 on X-Y.(from Y to X)
+    nTheta      3;      // polar angles in PI (from Z to X-Y plane)
+    maxIter     10;     // maximum number of iterations
+    tolerance   2e-2;   // convergence criteria for radiation iteration
+
+    useSolarLoad      false;
+
+    useExternalBeam   true;//The fvDOM radiation model now includes support for external beams 
+//from a solar external load to provide a straightforward means to include solar load in the domain
+
+    // Energy spectrum for the external beam
+    spectralDistribution (1);
+}
+
+solarCalculatorCoeffs
+{
+    sunDirectionModel   sunDirConstant;
+
+    sunDirection        (1 -1 -1.19);
+    // or
+    // localStandardMeridian   1;      // GMT offset (hours)
+    // startDay                100;    // day of the year
+    // startTime               15;     // time of the day (hours decimal)
+    // longitude               9.1900; // longitude (degrees)
+    // latitude                45.4642; // latitude (degrees)
+    // gridUp                  (0 0 1);
+    // gridEast                (1 0 0);
+
+    sunLoadModel sunLoadConstant;
+    directSolarRad  500;    // [w/m2]
+    diffuseSolarRad 0;     // [w/m2]
+    // or
+    // sunLoadModel sunLoadFairWeatherConditions;
+    // A       500;        // Apparent solar irradiation at air mass m = 0
+    // B       0.142;      // Atmospheric extinction coefficient
+    // beta    90;         // Solar altitude (in degrees) above the horizontal
+    //groundReflectivity 0.2;
+     C   0.058;  // Model constant
+}
+
+// Number of flow iterations per radiation iteration
+solverFreq 10;
+
+absorptionEmissionModel multiBandAbsorptionEmission;
+
+multiBandAbsorptionEmissionCoeffs
+{
+    absorptivity  (0);
+    emissivity    (0);
+}
+
+scatterModel    none;
+
+sootModel       none;
+
+// ************************************************************************* //
