@@ -1,0 +1,219 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      snappyHexMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+#includeEtc "caseDicts/mesh/generation/snappyHexMeshDict.cfg"
+
+castellatedMesh on;
+snap            on;
+addLayers       off;//边界层
+
+geometry
+{
+    atrium.stl//替换成自己的模型名称
+    {
+        type triSurfaceMesh;
+        name  atrium;//替换成自己的模型名称
+    }
+	building.stl//替换成自己的模型名称
+    {
+        type triSurfaceMesh;
+        name  building;//替换成自己的模型名称
+    }
+	surround.stl//替换成自己的模型名称的模型名称
+    {
+        type triSurfaceMesh;
+        name  surround;//替换成自己的模型名称
+    }
+	
+	window_inlet.stl
+	{
+	    type triSurfaceMesh;
+        name  window_inlet;//替换成自己的模型名称
+	}
+	window_outlet.stl
+	{
+	    type triSurfaceMesh;
+        name  window_outlet;//替换成自己的模型名称
+	}
+		building_outlet.stl
+	{
+	    type triSurfaceMesh;
+        name  building_outlet;//替换成自己的模型名称
+	}
+			building_inlet.stl
+	{
+	    type triSurfaceMesh;
+        name  building_inlet;//替换成自己的模型名称
+	}
+	glass.stl
+	{
+	    type triSurfaceMesh;
+        name  glass;//替换成自己的模型名称
+	}
+   /*refinementBox
+    {
+        type searchableBox;
+        min  ( 0  0  10);
+        max  (10  10  20);
+    }//代表更细腻的网格范围，加密小汽车周围的网格
+	*/
+};
+
+castellatedMeshControls
+{
+   features
+    (
+    { file  "atrium.eMesh"; level 1; }
+	{ file  "building.eMesh"; level 1; }
+	{ file  "surround.eMesh"; level 1; }
+	{ file  "glass.eMesh"; level 1; }
+	{ file  "window_inlet.eMesh"; level 1; }
+	{ file  "window_outlet.eMesh"; level 1; }
+	{ file  "building_inlet.eMesh"; level 1; }
+	{ file  "building_outlet.eMesh"; level 1; }
+    );//修改成自己的文件名
+
+    refinementSurfaces
+    {
+        atrium
+        {
+            level (2 2);
+			faceZone atrium;
+			cellZone atrium;
+			cellZoneInside inside;
+           //patchInfo { type wall; }
+		   //boundary internal;
+        }
+		building
+        {
+            level (2 2);
+			faceZone building;
+			cellZone building;
+			cellZoneInside inside;
+           //patchInfo { type wall; }
+		   //boundary internal;
+        }
+		surround
+        {
+            level (1 1);
+			//faceZone window;
+			//cellZone window;
+			//cellZoneInside inside;
+           patchInfo { type wall; }
+		   //boundary internal;
+        }
+		glass
+        {
+            level (2 2);
+			//faceZone window;
+			//cellZone window;
+			//cellZoneInside inside;
+           patchInfo { type wall; }
+		   //boundary internal;
+        }
+		
+		window_inlet
+        {
+            level (2 2);
+			//faceZone window;
+			//cellZone window;
+			//cellZoneInside inside;
+           patchInfo { type wall; }
+		   //boundary internal;
+        }
+		window_outlet
+        {
+            level (2 2);
+			//faceZone window;
+			//cellZone window;
+			//cellZoneInside inside;
+           patchInfo { type wall; }
+		   //boundary internal;
+        }
+		building_inlet
+        {
+            level (2 2);
+			//faceZone window;
+			//cellZone window;
+			//cellZoneInside inside;
+           patchInfo { type wall; }
+		   //boundary internal;
+        }
+		building_outlet
+        {
+            level (2 2);
+			//faceZone window;
+			//cellZone window;
+			//cellZoneInside inside;
+           patchInfo { type wall; }
+		   //boundary internal;
+        }
+		
+    }
+
+    refinementRegions
+    {
+       /* refinementBox
+        {
+            mode inside;
+            levels ((2 3));
+        }
+		*/
+    }
+
+    locationInMesh (200  100  0);//在小汽车外面找一个点坐标，坐标值不唯一，只需落在小汽车外部，流场内部即可
+}
+
+snapControls
+{
+    explicitFeatureSnap    true;
+    implicitFeatureSnap   false;
+}
+/*
+addLayersControls
+{
+    layers
+    {
+        atrium_FACE
+        {
+            nSurfaceLayers 3;
+        }
+		domain1_FACE
+        {
+            nSurfaceLayers 3;
+        }
+    }
+
+    relativeSizes       true;
+    expansionRatio      1.2;
+    finalLayerThickness 0.5;
+    minThickness        1e-3;
+}
+*/
+meshQualityControls
+{}
+
+writeFlags
+(
+    noRefinement
+    // scalarLevels
+    // layerSets
+    // layerFields
+);
+
+mergeTolerance 1e-5;//5小于controlDict里的writePrecision
+
+// ************************************************************************* //

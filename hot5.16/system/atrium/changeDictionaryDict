@@ -1,0 +1,43 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2212                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      changeDictionaryDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+boundary
+{
+    window_inlet
+    {
+        type            mappedWall;
+        sampleMode      nearestPatchFace;
+        sampleRegion    domain1;
+        samplePatch    window_inlet;
+    }
+	    window_outlet
+    {
+        type            mappedWall;
+        sampleMode      nearestPatchFace;
+        sampleRegion    domain1;
+        samplePatch    window_outlet;
+    }
+	 glass
+    {
+        type            mappedWall;
+        sampleMode      nearestPatchFace;
+        sampleRegion    domain1;
+        samplePatch    glass;
+    }
+}
+
+
+// ************************************************************************* //
